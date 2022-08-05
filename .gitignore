@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 requirements-prodigy.txt
+data/
+.DS_Store
