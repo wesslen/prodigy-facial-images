@@ -32,7 +32,13 @@ classify_images:
 	python -m prodigy classify-images image_categories ./data/rq1 -F scripts/classify_images.py
 
 ab_captcha_preprocess:
-	python scripts/convert.py data/rq2data.csv data/ab_captcha.jsonl
+	python scripts/convert_captcha.py data/rq2data.csv data/ab_captcha.jsonl
 
 ab_captcha:
 	python -m prodigy ab_captcha images data/ab_captcha.jsonl -F scripts/ab_captcha.py
+
+teach_anger_preprocess:
+	python scripts/convert_teach.py data/rq1data.csv data/anger_teach.jsonl
+
+teach_image:
+	python -m prodigy teach_image images_teach data/anger_teach.jsonl -F scripts/teach_image.py

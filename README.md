@@ -22,7 +22,12 @@ python -m prodigy classify-images image_categories ./images -F scripts/classify_
 
 ### Active Learning
 
-TODO
+![](docs/img/teach_image.png)
+
+```bash
+#make teach_image
+python -m prodigy teach_image images_teach data/anger_teach.jsonl -F scripts/teach_image.py
+```
 
 ### A/B Captcha
 
