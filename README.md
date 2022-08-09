@@ -24,9 +24,23 @@ python -m prodigy classify-images image_categories ./images -F scripts/classify_
 
 TODO
 
-### Captcha
+### A/B Captcha
 
-TODO
+![](docs/img/ab_captcha.png)
+
+Before running, you need to run this command once to convert the images to base64 images and convert to `.jsonl` format.
+
+```bash
+#make ab_captcha_preprocess
+python scripts/convert.py data/rq2data.csv data/ab_captcha.jsonl
+```
+
+After you have created `ab_captcha.jsonl`, you can now run the recipe:
+
+```bash
+#make ab_captcha
+python -m prodigy ab_captcha images data/ab_captcha.jsonl -F scripts/ab_captcha.py
+```
 
 ## ⏩ Getting started
 
