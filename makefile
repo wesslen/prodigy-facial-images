@@ -30,3 +30,9 @@ binary_anger:
 
 classify_images:
 	python -m prodigy classify-images image_categories ./data/rq1 -F scripts/classify_images.py
+
+ab_captcha_preprocess:
+	python scripts/convert.py data/rq2data.csv data/ab_captcha.jsonl
+
+ab_captcha:
+	python -m prodigy ab_captcha images data/ab_captcha.jsonl -F scripts/ab_captcha.py
