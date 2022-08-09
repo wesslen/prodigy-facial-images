@@ -12,9 +12,9 @@ msg = wasabi.Printer()
 
 
 @app.command()
-def csv_to_jsonl(
+def ab_captcha_csv_to_jsonl(
     input_path: Path = typer.Argument(..., help="Path to input csv."),
-    output_path: Path = typer.Argument(..., help="Path to putput jsonl."),
+    output_path: Path = typer.Argument(..., help="Path to output jsonl."),
 ):
     """
     Read in given data (.csv) and export to a .jsonl file
@@ -42,26 +42,17 @@ def csv_to_jsonl(
                 {
                     "label": "HAPPY",
                     "options": images,
-                    "meta": {"person_name": row[4], "id": i, "rand": 1 if random_value < 0.5 else 2}
+                    "meta": {
+                        "person_name": row[4], 
+                        "id": i, 
+                        "model": 1 if random_value < 0.5 else 2,
+                    }
                 }
             )
-            # examples.append(
-            #     {
-            #         "id": i, 
-            #         "screen_name": row[1], 
-            #         "person_name": row[4],
-            #         "clean_text": row[5],
-            #         "m0_anger": float(row[50]),
-            #         "m0_happiness": float(row[51]),
-            #         "m0_calm": float(row[52]),
-            #         "m1_disgust": float(row[53]),
-            #         "m1_sadness": float(row[54]),
-            #         "m1_surprise": float(row[55])
-            #     }
-            # )
 
     srsly.write_jsonl(output_path, examples)
     msg.good(f"Exported file to {output_path}")
+
 
 if __name__ == "__main__":
     app()
